@@ -1,0 +1,32 @@
+import sys, os
+import sys as foo
+
+from foo import (
+    bar as baz,
+    alpha
+)
+
+def my_func():
+    ...
+
+class MyClass:
+    ...
+
+MYCONSTANT = 1
+
+x = 1
+del x
+
+
+# allways: start
+__all__ = [
+    "alpha",
+    "baz",
+    "foo",
+    "my_func",
+    "MyClass",
+    "MYCONSTANT",
+    "os",
+    "sys",
+]
+# allways: end

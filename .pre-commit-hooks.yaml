@@ -1,0 +1,8 @@
+- id: allways
+  name: allways
+  description: Automatically add/update `__all__` statements
+  entry: allways
+  language: python
+  types: [python]
+  files: '__init__.py$'
+  minimum_pre_commit_version: 0.15.0

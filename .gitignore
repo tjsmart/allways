@@ -1,0 +1,7 @@
+/target
+build/
+dist/
+venv
+*.egg-info
+.tox
+/test.txt
