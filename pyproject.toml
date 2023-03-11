@@ -1,0 +1,21 @@
+[build-system]
+requires = ["maturin>=0.14,<0.15"]
+build-backend = "maturin"
+
+[project]
+name = "allways"
+version = "0.0.1"
+authors = [
+  { name="Tyler Smart", email="tjsmart@ucsc.edu" },
+]
+description = "Automatically update `__all__` statements."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Linux",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/tjsmart/allways"

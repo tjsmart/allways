@@ -1,0 +1,45 @@
+name: Build wheels and integration tests
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  integration:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10"]
+        os: [ubuntu-20.04, macOS-latest, windows-2019]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Setup | Cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install tox, build
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade tox build
+
+      - name: Build wheel
+        run: python -m build --wheel
+
+      - name: Upload wheels as workflow artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.os }}-wheel
+          path: ./target/wheels/*.whl
+
+      - name: Integration tests
+        if: "!startsWith(matrix.os, 'windows')"
+        run: python -m tox --installpkg ./target/wheels/*.whl
