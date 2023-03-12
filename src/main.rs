@@ -13,11 +13,11 @@ fn main() -> Result<()> {
 
     let mut rtc = 0;
     for file in &args.paths {
-        let src = std::fs::read_to_string(&file)?;
+        let src = std::fs::read_to_string(file)?;
         if let Some(new_src) = do_it_allways(&src)? {
             if src != new_src {
                 println!("Updating __all__ statement in {}", file.display());
-                std::fs::write(&file, new_src)?;
+                std::fs::write(file, new_src)?;
                 rtc |= 1;
             }
         }
