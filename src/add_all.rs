@@ -97,7 +97,7 @@ fn get_public_names(src: &str) -> Result<Vec<String>> {
 fn case_insensitive_cmp(left: &String, right: &String) -> Ordering {
     let cmp = left.to_lowercase().cmp(&right.to_lowercase());
     if let Ordering::Equal = cmp {
-        left.cmp(&right)
+        left.cmp(right)
     } else {
         cmp
     }
