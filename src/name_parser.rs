@@ -215,7 +215,7 @@ impl From<Vec<ImportSymbol>> for NameParser {
         for symbol in symbols {
             let name = symbol.alias.unwrap_or(symbol.symbol);
             if name == "*" {
-                print!("WARNING: star imports not supported yet!");
+                // star imports can be ignored
                 continue;
             }
             parser.insert(name);
