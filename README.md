@@ -23,7 +23,7 @@ See [pre-commit](https://github.com/pre-commit/pre-commit) for instructions.
 Sample `.pre-commit-config.yaml`
 
 ```yaml
--   repo: https://github.com/tjsmart/allways
+-   repo: https://github.com/tjsmart/allways-pre-commit
     rev: v0.0.2
     hooks:
     -   id: allways
